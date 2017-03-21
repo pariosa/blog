@@ -43,6 +43,7 @@ Route::get('/admin', 'AdminController@index');
 Route::post('/createBoard', 'BoardController@create');
 
 Route::get('/board', 'BoardController@read');
+Route::get('/boards', 'BoardController@read');
 
 Route::get('b/{board}', function($board){
 	$board = App\Board::where("Abbreviation", '=', $board)->first();
@@ -53,8 +54,20 @@ Route::get('b/{board}', function($board){
 	return view('board')->with($with);
 });
 
-Route::post('/createTopic', 'TopicController@create');
+Route::get('b/{board}/{topic}', function($board, $topic){
+	$board = App\Board::where("Abbreviation", '=', $board)->first();
+	//dd($board);
+	$topic = App\Topic::where("id", '=', $topic)->first();
+	$replies = App\Reply::where('Topic', '=', $topic)->get();
+	$with = ['board' => $board, 
+		'topic' =>$topic,
+		'replies' => $replies];
+	return view('reply')->with($with);
+});
 
+
+Route::post('/createTopic', 'TopicController@create');
+Route::post('/createReply', 'ReplyController@create');
 Route::get('/topics', function(){
 
 	return App\Topic::all();

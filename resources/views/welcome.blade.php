@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Lara-Chan</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -68,29 +68,32 @@
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
-                    @if (Auth::check())
-                        <a href="{{ url('/blog') }}">Blog</a>
+                @if(Auth::check())
+                    @if (Auth::user()->is_admin)
+                      <a href="{{ url('/admin') }}">Admin</a>
+
+                    @endif
+                    @if (Auth::check()) 
 
                         <a href="{{ url('/home') }}">Home</a>
-                    @else
-                    ``<a href="{{ url('/blog') }}">blog</a>
+                    @else 
 
                         <a href="{{ url('/login') }}">Login</a>
                         <a href="{{ url('/register') }}">Register</a>
                     @endif
+                @endif
                 </div>
             @endif
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Lara-chan
                 </div>
 
                 <div class="links"> 
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="/boards">Boards</a>
+                    <a href="/login">Login</a>
+                    <a href="/Register">Register</a>
                 </div>
             </div>
         </div>

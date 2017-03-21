@@ -29,4 +29,12 @@
 	
 
 </div>
+
+<div class="container">
+  <h3>Boards</h3>
+  @foreach(App\Board::all() as $board)
+
+  <div class="row"><a href="/b/{{$board->Abbreviation}}">{{$board->Name}}</a></div>
+  @endforeach
+</div>
 @endsection

@@ -26,9 +26,9 @@ class BoardController extends Controller
     public function read(){
 
     	$boards = Board::all();
-    	dd($boards);
+        $with = ['boards'=> $boards];
     	
-    	return $boards;
+    	return view('boards')->with($with);
     }
 
     public function update(){
