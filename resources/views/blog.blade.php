@@ -18,7 +18,8 @@
                         <input type="text" class='form-control input-md' name='id' placeholder="" value="{{$post->id}}" />
                     </div>
                 </div>
-                                        <button class="btn btn-primary btn-success btn-sm" value="submit">Delete Blog Entry</button>
+                     <button class="btn btn-primary btn-success btn-sm" value="submit">Delete Blog Entry
+                     </button>
 
             </form>
              @endif 
