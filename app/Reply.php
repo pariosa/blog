@@ -13,9 +13,9 @@ class Reply extends Model
       protected $fillable = ['id','Board', 'Tripseed', 'Tripcode', 'Topic', 'Author', 'Subject', 'Content', 'Image', 'Thumbnail'];
  	
  	   public function topic(){
-      	return $this->belongsTo('App\Topic');
+      	return $this->belongsTo('App\Topic', 'id', 'Topic');
       }
       public function board(){
-      	return $this->belongsTo('App\Board');
+      	return $this->belongsTo('App\Board', 'Abbreviation', 'Board');
       }
 }

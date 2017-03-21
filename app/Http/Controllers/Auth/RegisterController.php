@@ -6,7 +6,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-
+use Illuminate\Http\Request;
 class RegisterController extends Controller
 {
     /*
@@ -67,5 +67,15 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+    protected function createAdmin(Request $data)
+    {
+        $admin =  User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'is_admin' => '1',
+            'password' => bcrypt($data['password']),
+        ]);
+        return redirect('/');
     }
 }
